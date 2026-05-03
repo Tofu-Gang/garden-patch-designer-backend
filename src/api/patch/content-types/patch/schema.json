@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patches",
+  "info": {
+    "singularName": "patch",
+    "pluralName": "patches",
+    "displayName": "Patch"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "x": {
+      "type": "decimal",
+      "required": true
+    },
+    "y": {
+      "type": "decimal",
+      "required": true
+    },
+    "width": {
+      "type": "decimal",
+      "required": true
+    },
+    "height": {
+      "type": "decimal",
+      "required": true
+    },
+    "season": {
+      "type": "integer",
+      "required": true
+    },
+    "planted_at": {
+      "type": "date"
+    },
+    "harvested_at": {
+      "type": "date"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "member": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::member.member"
+    }
+  }
+}
