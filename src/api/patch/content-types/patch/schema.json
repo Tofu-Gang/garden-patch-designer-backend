@@ -29,7 +29,9 @@
     },
     "season": {
       "type": "integer",
-      "required": true
+      "required": true,
+      "default": 2026,
+      "min": 2016
     },
     "planted_at": {
       "type": "date"
@@ -39,6 +41,7 @@
     },
     "description": {
       "type": "text",
+      "default": "Copa to tu roste?",
       "required": true
     },
     "member": {

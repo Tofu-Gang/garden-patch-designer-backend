@@ -441,6 +441,7 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    color: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -474,7 +475,9 @@ export interface ApiPatchPatch extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Copa to tu roste?'>;
     harvested_at: Schema.Attribute.Date;
     height: Schema.Attribute.Decimal & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -483,7 +486,15 @@ export interface ApiPatchPatch extends Struct.CollectionTypeSchema {
     member: Schema.Attribute.Relation<'oneToOne', 'api::member.member'>;
     planted_at: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
-    season: Schema.Attribute.Integer & Schema.Attribute.Required;
+    season: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 2016;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<2026>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
